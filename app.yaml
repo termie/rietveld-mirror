@@ -1,5 +1,5 @@
-application: codereview
-version: 2
+application: rietku
+version: 1
 runtime: python
 api_version: 1
 
@@ -10,10 +10,6 @@ handlers:
 - url: /(robots.txt|favicon.ico)
   static_files: static/\1
   upload: static/(robots.txt|favicon.ico)
-
-- url: /google7db36eb2cc527940.html
-  static_files: static/robots.txt
-  upload: static/robots.txt
 
 - url: /static/(script.js|styles.css|upload.py)
   static_files: static/\1
