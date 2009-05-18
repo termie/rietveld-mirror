@@ -1,7 +1,7 @@
 {%extends "base.html"%}
 
 {%block mainmenu%}
-  <a href="{%url codereview.views.index%}" class="active">Issues</a>
+  <a href="{%url codereview.views.index%}" class="active">Patches</a>
   <a href="{%url codereview.views.repos%}">Repositories</a>
 {%endblock%}
 
@@ -9,18 +9,18 @@
 {%block mainmenu2%}
   {%if user%}
     {%if uploadpy_hint%}
-      <a href="{%url codereview.views.use_uploadpy%}">Create Issue</a>
+      <a href="{%url codereview.views.use_uploadpy%}">Create Patch</a>
     {%else%}
-      <a href="{%url codereview.views.new%}">Create Issue</a>
+      <a href="{%url codereview.views.new%}">Create Patch</a>
     {%endif%}
     |
-    <a href="{%url codereview.views.mine%}">My Issues</a>
+    <a href="{%url codereview.views.mine%}">My Patches</a>
     |
-    <a href="{%url codereview.views.all%}">Recent Issues</a>
+    <a href="{%url codereview.views.all%}">Recent Patches</a>
     |
-    <a href="{%url codereview.views.starred%}">Starred Issues</a>
+    <a href="{%url codereview.views.starred%}">Starred Patches</a>
   {%else%}
-    <a class="novisit" href="{%url codereview.views.index%}">Recent Issues</a>
+    <a class="novisit" href="{%url codereview.views.index%}">Recent Patches</a>
     |
     <a class="novisit" href="{{sign_in}}">Sign in</a>
     with your <a href="https://www.google.com/accounts/NewAccount">Google
@@ -34,12 +34,12 @@
     {%include "issue_star.html"%}
 {%if issue.edit_allowed and not issue.closed%}
 <span class="issue-close" id="issue-close-{{issue.key.id}}">
-    <a href="javascript:M_closeIssue({{issue.key.id}})">
-      <img src="/static/close.gif" title="Close This Issue" width="15"
+    <a href="javascript:M_closePatch({{issue.key.id}})">
+      <img src="/static/close.gif" title="Close This Patch" width="15"
 	   height="15" border="0"></a>
 </span>
 {%endif%}
-    Issue <a href="{%url codereview.views.show issue.key.id%}"
+    Patch <a href="{%url codereview.views.show issue.key.id%}"
                onmouseover="M_showPopUp(this, 'popup-issue');">
             {{issue.key.id}}</a>:
     {{issue.subject}} {%if issue.closed %} (Closed) {%endif%}
@@ -52,9 +52,9 @@
         {%block issue_actions%}
           <div>
             {%if issue.edit_allowed%}
-              <a class="novisit"
+            <a class="novisit"
                  href="{%url codereview.views.edit issue.key.id%}">
-                Edit Issue
+                Edit Patch
               </a>
             {%else%}
               <span class="disabled">Can't Edit</span>
@@ -107,7 +107,7 @@
 {%block popup%}
   {%if issue%}
     <div class="popup" id="popup-issue">
-      <b>Issue {{issue.key.id}}: {{issue.subject}}
+      <b>Patch {{issue.key.id}}: {{issue.subject}}
 	{%if issue.closed %} (Closed) {%endif%}</b><br/>
       Created {{issue.created|timesince}} ago by {{issue.owner|nickname}}<br/>
       Modified {{issue.modified|timesince}} ago<br/>

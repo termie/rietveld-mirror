@@ -1,11 +1,11 @@
 {%extends "issue_base.html"%}
-{%block title1%}Create Issue -{%endblock%}
+{%block title1%}Create Patch -{%endblock%}
 {%block body%}
 
 {%if form.errors%}
 <h2>There Were Errors!</h2>
 {%else%}
-<h2>Create New Issue</h2>
+<h2>Create New Patch</h2>
 {%endif%}
 
 <p>Download <a href="/static/upload.py">upload.py</a>, a simple tool for
@@ -15,7 +15,7 @@ uploading diffs from a version control system to the codereview app.</p>
       method="post" enctype="multipart/form-data" id="create-form">
 <table>
 {{form}}
-<tr><td><input type="submit" value="Create Issue"></td></tr>
+<tr><td><input type="submit" value="Create Patch"></td></tr>
 </table>
 </form>
 

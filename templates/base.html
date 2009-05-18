@@ -10,7 +10,7 @@
       {%if patch%}{{patch.filename}} -{%endif%}
     {%endblock%}
     {%block title2%}
-      {%if issue%}Issue {{issue.key.id}}: {{issue.subject}} -{%endif%}
+      {%if issue%}Patch {{issue.key.id}}: {{issue.subject}} -{%endif%}
     {%endblock%}
     Code Review
   </title>
@@ -18,22 +18,22 @@
   <link type="text/css" rel="stylesheet" href="/static/styles.css" />
   <script type="text/javascript" src="/static/script.js"></script>
   <link rel="alternate" type="application/atom+xml"
-   	title="Recent Issues"
+   	title="Recent Patches"
    	href="/rss/all" />
    {%if user%}
      <link rel="alternate" type="application/atom+xml"
-   	  title="Issues created by me"
+   	  title="Patches created by me"
    	  href="/rss/mine/{{user|nickname:"x"}}" />
      <link rel="alternate" type="application/atom+xml"
-   	  title="Issues reviewable by me" 
+   	  title="Patches reviewable by me" 
    	  href="/rss/reviews/{{user|nickname:"x"}}" />
      <link rel="alternate" type="application/atom+xml"
-   	  title="Issues closed by me"
+   	  title="Patches closed by me"
    	  href="/rss/closed/{{user|nickname:"x"}}" />
    {%endif%}
    {%if issue%}
      <link rel="alternate" type="application/atom+xml"
- 	    title="Issue {{issue.key.id}}"
+ 	    title="Patch {{issue.key.id}}"
  	    href="/rss/issue/{{issue.key.id}}" />
    {%endif%} 
 </head>
@@ -101,7 +101,7 @@ var publish_link = "{%url codereview.views.publish issue.key.id%}";
     <td>
       <table width="100%"> 
         <tr>
-         <td></td><th>Issue</th>
+         <td></td><th>Patch</th>
         </tr>
         <tr>
           <td class="shortcut"><span class="letter">u</span> <b>:</b></td><td>up to list of issues</td>
@@ -119,7 +119,7 @@ var publish_link = "{%url codereview.views.publish issue.key.id%}";
 	  <td class="shortcut"><span class="letter">i</span> <b>:</b></td><td>open current patch in unified diff view</td>
 	</tr>
         <tr><td>&nbsp;</td></tr>
-        <tr><td></td><th>Issue List</th></tr>
+        <tr><td></td><th>Patch List</th></tr>
         <tr>
           <td class="shortcut"><span class="letter">j</span> / <span class="letter">k</span> <b>:</b></td><td>jump to issue after / before current issue</td>
         </tr>
@@ -152,7 +152,7 @@ var publish_link = "{%url codereview.views.publish issue.key.id%}";
 {%if is_dev%}
 <div style="float:left; color:green; font-weight:bold">DEVELOPMENT SERVER</div>
 {%else%}
-<div style="float:left; font-weight:bold"><i>Rietveld</i> Code Review Tool</div>
+<div style="float:left; font-weight:bold"><i>JaikuEngine</i> Code Review Tool</div>
 {%endif%}
 {%if user%}
 <b>{{user.email}} ({{user|nickname:"x"}})</b>
@@ -170,13 +170,13 @@ var publish_link = "{%url codereview.views.publish issue.key.id%}";
    href="http://code.google.com/p/rietveld/wiki/CodeReviewHelp">Help</a>
 |
 <a class="novisit" target="_blank"
-   href="http://code.google.com/p/rietveld/issues/list">Bug tracker</a>
+   href="http://code.google.com/p/jaikuengine/issues/list">Bug tracker</a>
 |
 <a class="novisit" target="_blank"
-   href="http://groups.google.com/group/codereview-discuss">Discussion group</a>
+   href="http://groups.google.com/group/jaikuengine-discuss">Discussion group</a>
 |
 <a class="novisit" target="_blank"
-   href="http://code.google.com/p/rietveld">Source code</a>
+   href="http://code.google.com/p/jaikuengine">Source code</a>
 |
 {%if user%}
 <a class="novisit" href="{{sign_out}}">Sign out</a>
@@ -188,7 +188,7 @@ var publish_link = "{%url codereview.views.publish issue.key.id%}";
 <div class="counter">({{counter}})</div>
 <div class="mainmenu">
   {%block mainmenu%}
-  <a href="{%url codereview.views.index%}">Issues</a>
+  <a href="{%url codereview.views.index%}">Patches</a>
   <a href="{%url codereview.views.repos %}">Repositories</a>
   {%endblock%}
 </div>
@@ -212,10 +212,10 @@ var publish_link = "{%url codereview.views.publish issue.key.id%}";
   <div style="height:14px;">
   <img src="/static/rss.gif" alt="RSS Feeds" width="14" height="14"
        align="top" />
-  <a href="/rss/all">Recent Issues</a>
+  <a href="/rss/all">Recent Patches</a>
   {%if user%}
   |
-  <a href="/rss/mine/{{user|nickname:"x"}}">My Issues</a>
+  <a href="/rss/mine/{{user|nickname:"x"}}">My Patches</a>
   |
   <a href="/rss/reviews/{{user|nickname:"x"}}">My Reviews</a>
   |
