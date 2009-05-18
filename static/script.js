@@ -2730,7 +2730,7 @@ function M_jumpToPatch(select, issue, patchset, unified) {
  * @param {Integer} id The issue id.
  * @param {String} url The url fragment to append: "/star" or "/unstar".
  */
-function M_setIssueStar_(id, url) {
+function M_setPatchStar_(id, url) {
   var httpreq = M_getXMLHttpRequest();
   if (!httpreq) {
     return true;
@@ -2751,23 +2751,23 @@ function M_setIssueStar_(id, url) {
  * Add a star to the given issue.
  * @param {Integer} id The issue id.
  */
-function M_addIssueStar(id) {
-  return M_setIssueStar_(id, "/star");
+function M_addPatchStar(id) {
+  return M_setPatchStar_(id, "/star");
 }
 
 /**
  * Remove the star from the given issue.
  * @param {Integer} id The issue id.
  */
-function M_removeIssueStar(id) {
-  return M_setIssueStar_(id, "/unstar");
+function M_removePatchStar(id) {
+  return M_setPatchStar_(id, "/unstar");
 }
 
 /**
  * Close a given issue.
  * @param {Integer} id The issue id.
  */
-function M_closeIssue(id) {
+function M_closePatch(id) {
   var httpreq = M_getXMLHttpRequest();
   if (!httpreq) {
     return true;
