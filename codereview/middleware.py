@@ -30,4 +30,5 @@ class AddUserToRequestMiddleware(object):
     account = None
     if request.user is not None:
       account = models.Account.get_account_for_user(request.user)
+      account.is_admin = request.user_is_admin
     models.Account.current_user_account = account
